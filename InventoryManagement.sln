@@ -3,7 +3,31 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryManagement.Entities", "InventoryManagement.Entities\InventoryManagement.Entities.csproj", "{FBC787C2-1CA4-41C6-A9AA-0788624C41E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryManagement.BackOffice", "InventoryManagement.BackOffice\InventoryManagement.BackOffice.csproj", "{F82D3B8F-379B-42DF-AA69-A7A0D2D4E53C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryManagement.Bll", "InventoryManagement.Bll\InventoryManagement.Bll.csproj", "{320CEFD5-9FFD-4AB5-8FFE-44BF24189608}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FBC787C2-1CA4-41C6-A9AA-0788624C41E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBC787C2-1CA4-41C6-A9AA-0788624C41E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBC787C2-1CA4-41C6-A9AA-0788624C41E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBC787C2-1CA4-41C6-A9AA-0788624C41E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F82D3B8F-379B-42DF-AA69-A7A0D2D4E53C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F82D3B8F-379B-42DF-AA69-A7A0D2D4E53C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F82D3B8F-379B-42DF-AA69-A7A0D2D4E53C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F82D3B8F-379B-42DF-AA69-A7A0D2D4E53C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{320CEFD5-9FFD-4AB5-8FFE-44BF24189608}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{320CEFD5-9FFD-4AB5-8FFE-44BF24189608}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{320CEFD5-9FFD-4AB5-8FFE-44BF24189608}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{320CEFD5-9FFD-4AB5-8FFE-44BF24189608}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
