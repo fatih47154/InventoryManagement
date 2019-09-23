@@ -19,5 +19,7 @@ namespace InventoryManagement.Entities.Abstract
         public virtual DateTime? UpdatededDate { get; set; }
 
         public bool? IsActive { get; set; }
+
+        public string description { get; set; }
     }
 }

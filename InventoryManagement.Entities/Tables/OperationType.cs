@@ -7,11 +7,9 @@ using InventoryManagement.Entities.Abstract;
 
 namespace InventoryManagement.Entities.Tables
 {
-    public class DeviceType : ABaseEntity
+    public class OperationType : AOperationCollectionEntity
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
-        public char Character { get; set; }
-        public ICollection<Model> Models { get; set; }
     }
 }
