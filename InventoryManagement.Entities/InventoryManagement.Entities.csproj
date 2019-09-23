@@ -79,6 +79,14 @@
     <Compile Include="Tables\Store.cs" />
     <Compile Include="Tables\User.cs" />
     <Compile Include="Validations\CompanyValidator.cs" />
+    <Compile Include="Validations\DeviceTypeValidator.cs" />
+    <Compile Include="Validations\LocationValidator.cs" />
+    <Compile Include="Validations\ModelValidator.cs" />
+    <Compile Include="Validations\OperationTypeValidator.cs" />
+    <Compile Include="Validations\OperationValidator.cs" />
+    <Compile Include="Validations\StatusValidator.cs" />
+    <Compile Include="Validations\StoreValidator.cs" />
+    <Compile Include="Validations\UserValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
