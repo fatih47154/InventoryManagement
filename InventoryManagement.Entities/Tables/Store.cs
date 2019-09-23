@@ -7,7 +7,7 @@ using InventoryManagement.Entities.Abstract;
 
 namespace InventoryManagement.Entities.Tables
 {
-    public class Store : AOperationCollectionEntity
+    public class Store : ABaseEntity
     {
         public Guid Id { get; set; }
         public string SerialNumber { get; set; }
@@ -20,6 +20,9 @@ namespace InventoryManagement.Entities.Tables
         public virtual Model Model { get; set; }
         public virtual User User { get; set; }
         public virtual OperationType OperationType { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public ICollection<Operation> Operations { get; set; }
 
     }
 }

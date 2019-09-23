@@ -7,9 +7,11 @@ using InventoryManagement.Entities.Abstract;
 
 namespace InventoryManagement.Entities.Tables
 {
-    public class Location : AOperationCollectionEntity
+    public class Location : ABaseEntity
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public ICollection<Operation> Operations { get; set; }
     }
 }

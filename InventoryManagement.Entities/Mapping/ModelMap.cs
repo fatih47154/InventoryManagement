@@ -16,6 +16,8 @@ namespace InventoryManagement.Entities.Mapping
             this.HasKey(p => p.Id);
             this.Property(p => p.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             this.Property(p => p.Name).HasMaxLength(200);
+
+            this.ToTable("Model");
         }
     }
 }

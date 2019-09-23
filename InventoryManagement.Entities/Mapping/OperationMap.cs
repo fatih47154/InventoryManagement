@@ -17,6 +17,8 @@ namespace InventoryManagement.Entities.Mapping
             this.Property(p => p.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             this.Property(p => p.Name).HasMaxLength(200);
             this.Property(p => p.Surname).HasMaxLength(200);
+
+            this.ToTable("Operation");
         }
     }
 }

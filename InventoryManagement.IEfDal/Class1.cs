@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace InventoryManagement.Entities
+namespace InventoryManagement.IEfDal
 {
     public class Class1
     {

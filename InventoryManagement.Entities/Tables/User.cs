@@ -7,7 +7,7 @@ using InventoryManagement.Entities.Abstract;
 
 namespace InventoryManagement.Entities.Tables
 {
-    public class User: AOperationCollectionEntity
+    public class User: ABaseEntity
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
@@ -16,6 +16,11 @@ namespace InventoryManagement.Entities.Tables
         public string Password { get; set; }
         public Guid CompanyId { get; set; }
         public virtual Company Company { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public ICollection<Operation> Operations { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public ICollection<Store> Stores { get; set; }
     }
 }

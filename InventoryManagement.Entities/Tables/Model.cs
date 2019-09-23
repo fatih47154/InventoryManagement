@@ -13,6 +13,7 @@ namespace InventoryManagement.Entities.Tables
         public string Name { get; set; }
         public Guid DeviceTypeId { get; set; }
         public virtual DeviceType DeviceType { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public ICollection<Store> Stores { get; set; }
     }
 }
