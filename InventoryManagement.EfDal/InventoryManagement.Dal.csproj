@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\InventoryManagementContext.cs" />
+    <Compile Include="DataAccess\LoginDal.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -57,6 +58,10 @@
     <ProjectReference Include="..\InventoryManagement.Entities\InventoryManagement.Entities.csproj">
       <Project>{FBC787C2-1CA4-41C6-A9AA-0788624C41E1}</Project>
       <Name>InventoryManagement.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\InventoryManagement.IEfDal\InventoryManagement.IDal.csproj">
+      <Project>{70b9e62f-e052-4974-9d9f-1b5fd12e8a3e}</Project>
+      <Name>InventoryManagement.IDal</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -41,8 +41,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="BusinessLogic\LoginBll.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\InventoryManagement.EfDal\InventoryManagement.Dal.csproj">
+      <Project>{18122926-d5a8-4736-b27f-573be2cf50ee}</Project>
+      <Name>InventoryManagement.Dal</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\InventoryManagement.Entities\InventoryManagement.Entities.csproj">
+      <Project>{FBC787C2-1CA4-41C6-A9AA-0788624C41E1}</Project>
+      <Name>InventoryManagement.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\InventoryManagement.IEfDal\InventoryManagement.IDal.csproj">
+      <Project>{70b9e62f-e052-4974-9d9f-1b5fd12e8a3e}</Project>
+      <Name>InventoryManagement.IDal</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
