@@ -23,6 +23,7 @@ namespace InventoryManagement.BackOffice.Views
         public LocationManagementView()
         {
             InitializeComponent();
+            DataContext = new ViewModels.LocationManagementViewModel();
         }
     }
 }

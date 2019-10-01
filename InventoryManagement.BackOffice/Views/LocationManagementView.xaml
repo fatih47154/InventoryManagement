@@ -4,9 +4,38 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:InventoryManagement.BackOffice.Views"
+             xmlns:viewModels="clr-namespace:InventoryManagement.BackOffice.ViewModels"
+             xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="440" d:DesignWidth="764"
+             Height="440" Width="764">
+<UserControl.DataContext>
+<x:Type TypeName="viewModels:DataManagementViewModel"></x:Type>
+</UserControl.DataContext>
+
     <Grid>
-            
+        <dxg:GridControl Height="370" Width="764" VerticalAlignment="Top" ItemsSource="{Binding LocationModels}" AutoGenerateColumns="AddNew" EnableSmartColumnsGeneration="True" SelectionMode="MultipleRow">
+            <dxg:GridControl.View>
+                <dxg:TableView AllowPerPixelScrolling="True" ShowTotalSummary="True" AllowEditing="True" FontFamily="Britannic Bold" AllowDragDrop="False" AllowScrollingOnDrag="True" GroupSummaryDisplayMode="Default" SummariesIgnoreNullValues="True" AllowPrintColumnHeaderImage="True" EditorButtonShowMode="ShowForFocusedCell" FontSize="16" />
+            </dxg:GridControl.View>
+            <dxg:GridColumn FieldName="İslemler">
+                <dxg:GridColumn.CellTemplate>
+                    <DataTemplate>
+                        <StackPanel HorizontalAlignment="Center"  Orientation="Horizontal" Margin="1">
+                            <Button HorizontalAlignment="Left" FontFamily="Impact" Background="#FF2F77CD" BorderBrush="#FF307CD6" Foreground="#DDFFFFFF" Height="25" Width="46">
+                                <materialDesign:PackIcon Kind="Edit" VerticalAlignment="Center"></materialDesign:PackIcon>
+                            </Button>
+                            <Button HorizontalAlignment="Left" FontFamily="Impact" Margin="5,0,0,0" Background="#FFCB3D50" BorderBrush="#FF307CD6" Foreground="#DDFFFFFF" Width="46" Height="25">
+                                <materialDesign:PackIcon Kind="Delete" VerticalAlignment="Center"></materialDesign:PackIcon>
+                            </Button>
+                        </StackPanel>
+                    </DataTemplate>
+                </dxg:GridColumn.CellTemplate>
+            </dxg:GridColumn>
+        </dxg:GridControl>
+        <Button HorizontalAlignment="Left" Margin="20" FontFamily="Impact" VerticalAlignment="Bottom" Background="#FF4BCD02" BorderBrush="#FF307CD6" Foreground="#DDFFFFFF">
+            <materialDesign:PackIcon Kind="Add" VerticalAlignment="Center"></materialDesign:PackIcon>
+        </Button>
     </Grid>
 </UserControl>

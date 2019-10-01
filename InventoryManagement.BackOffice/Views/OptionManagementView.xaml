@@ -17,7 +17,7 @@
                 <TabItem Header="LOKASYON YÖNETİMİ" FontSize="16">
                     <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect FadeIn, Duration=0:0:0.8}">
                         <StackPanel Width="764" Height="440" Background="white" Orientation="Horizontal">
-                            
+                            <local:LocationManagementView></local:LocationManagementView>
                         </StackPanel>
                     </materialDesign:TransitioningContent>
                 </TabItem>
