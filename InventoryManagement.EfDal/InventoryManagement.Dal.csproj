@@ -41,6 +41,8 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -50,7 +52,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\InventoryManagementContext.cs" />
+    <Compile Include="DataAccess\CompanyDal.cs" />
+    <Compile Include="DataAccess\DeviceTypeDal.cs" />
+    <Compile Include="DataAccess\LocationDal.cs" />
     <Compile Include="DataAccess\LoginDal.cs" />
+    <Compile Include="DataAccess\MenuDal.cs" />
+    <Compile Include="DataAccess\MenuRoleDal.cs" />
+    <Compile Include="DataAccess\ModelDal.cs" />
+    <Compile Include="DataAccess\OperationDal.cs" />
+    <Compile Include="DataAccess\OperationTypeDal.cs" />
+    <Compile Include="DataAccess\StatusDal.cs" />
+    <Compile Include="DataAccess\StoreDal.cs" />
+    <Compile Include="Migrations\201909281728424_InventoryContextDatabase.cs" />
+    <Compile Include="Migrations\201909281728424_InventoryContextDatabase.Designer.cs">
+      <DependentUpon>201909281728424_InventoryContextDatabase.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -69,6 +85,11 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201909281728424_InventoryContextDatabase.resx">
+      <DependentUpon>201909281728424_InventoryContextDatabase.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="InventoryManagement.FrontOffice.Views.SearchUpdateView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:viewModels="clr-namespace:InventoryManagement.FrontOffice.ViewModels"
+             xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+             mc:Ignorable="d" 
+             Height="440" Width="764">
+    <UserControl.DataContext>
+        <x:Type TypeName="viewModels:SearchUpdateViewModel"/>
+    </UserControl.DataContext>
+    <Grid>
+        <dxg:GridControl ItemsSource="{Binding Updates}" AutoGenerateColumns="AddNew" EnableSmartColumnsGeneration="True" SelectionMode="MultipleRow">
+            <dxg:GridControl.View>
+                <dxg:TableView AllowPerPixelScrolling="True" ShowTotalSummary="True" AllowEditing="True" FontFamily="Britannic Bold" AllowDragDrop="False" AllowScrollingOnDrag="True" GroupSummaryDisplayMode="Default" SummariesIgnoreNullValues="True" AllowPrintColumnHeaderImage="True" EditorButtonShowMode="ShowForFocusedCell" FontSize="16" />
+            </dxg:GridControl.View>
+        </dxg:GridControl>
+    </Grid>
+</UserControl>

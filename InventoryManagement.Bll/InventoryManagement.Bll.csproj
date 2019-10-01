@@ -41,7 +41,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\Class1.cs" />
+    <Compile Include="BusinessLogic\CompanyBll.cs" />
+    <Compile Include="BusinessLogic\DeviceTypeBll.cs" />
+    <Compile Include="BusinessLogic\LocationBll.cs" />
     <Compile Include="BusinessLogic\LoginBll.cs" />
+    <Compile Include="BusinessLogic\MenuBll.cs" />
+    <Compile Include="BusinessLogic\ModelBll.cs" />
+    <Compile Include="BusinessLogic\OperationBll.cs" />
+    <Compile Include="BusinessLogic\OperationTypeBll.cs" />
+    <Compile Include="BusinessLogic\StatusBll.cs" />
+    <Compile Include="BusinessLogic\StoreBll.cs" />
+    <Compile Include="BusinessLogic\UserBll.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

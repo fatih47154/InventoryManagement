@@ -1,0 +1,95 @@
+﻿<Window x:Class="InventoryManagement.FrontOffice.Views.DashboardView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d" Height="600" Width="1024" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None" >
+    <Grid Background="#FFEEEEEE">
+        <StackPanel VerticalAlignment="Top">
+            <Grid Background="#FF2196F3" Height="10"/>
+            <Grid Margin="5" Height="80">
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="140,0,0,0">
+                    <TextBlock Text="Envanter Takip" VerticalAlignment="Center" FontSize="24" FontFamily="Britannic Bold" Margin="20 0" Foreground="#FF575757"/>
+                    <Button Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Foreground="Gray">
+                        <materialDesign:PackIconExtension Kind="FacebookBox"/>
+                    </Button>
+                    <Button Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Foreground="Gray">
+                        <materialDesign:PackIconExtension Kind="TwitterBox"/>
+                    </Button>
+                    <Button Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Foreground="Gray">
+                        <materialDesign:PackIconExtension Kind="GithubBox"/>
+                    </Button>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="10,0">
+                    <Button Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Foreground="Gray">
+                        <materialDesign:PackIconExtension Kind="BellOutline"/>
+                    </Button>
+                    <Button Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Foreground="Gray" Content="{materialDesign:PackIcon Settings}"/>
+                    <Button x:Name="ButtonFechar" Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Foreground="Gray" Click="ButtonFechar_Click">
+                        <materialDesign:PackIconExtension Kind="Power"/>
+                    </Button>
+                </StackPanel>
+                <Image x:Name="Logo" Source="/InventoryManagement.FrontOffice;component/Assets/Images/DashboardTopLogo.jpg" HorizontalAlignment="Left" Height="97" Margin="285,-10,0,-43" VerticalAlignment="Top" Width="146"/>
+            </Grid>
+        </StackPanel>
+
+        <Grid Margin="260,100,0,0">
+            <Grid x:Name="GridPrincipal" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Grid>
+
+        <Grid Width="260" HorizontalAlignment="Left" Background="#FF222222">
+            <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.5}">
+                <Grid x:Name="GridCursor" Margin="0 100 0 0" Background="#FF0069C0" Width="10" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top"/>
+            </materialDesign:TransitioningContent>
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Orientation="Horizontal" Margin="0,30">
+                <StackPanel VerticalAlignment="Center" Margin="5,0">
+                    <Ellipse Height="10" Width="10" HorizontalAlignment="left" VerticalAlignment="Bottom" Fill="#FF23FD00"/>
+                </StackPanel>
+                
+                <TextBlock x:Name="UserName" TextWrapping="Wrap" FontFamily="Britannic Bold" FontSize="18" FontWeight="Bold">
+                    <Run Foreground="White">Fatih Karaüzüm</Run>
+                </TextBlock>
+            </StackPanel>
+            <ListView x:Name="ListViewMenu" Margin="0,100, 0,100" Foreground="LightGray" FontFamily="Champagne &amp; Limousines" FontSize="18" SelectionChanged="ListViewMenu_SelectionChanged" SelectedIndex="0">
+                <ListViewItem Height="60" Width="258">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Home" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
+                        <TextBlock Text="Envanter Hareketleri" FontSize="17" VerticalAlignment="Center" Margin="20 0" FontFamily="Britannic Bold"/>
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem Height="60" Width="257">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="FoodAllergy" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
+                        <TextBlock Text="Envanter Sorgulama" FontSize="17" VerticalAlignment="Center" Margin="20 0" FontFamily="Britannic Bold"/>
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem Height="60" Width="258">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="FormatListBulleted" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
+                        <TextBlock Text="Envanter Yönetimi" FontSize="17" VerticalAlignment="Center" Margin="20 0" FontFamily="Britannic Bold"/>
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem Height="60" Width="258">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="TruckDelivery" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
+                        <TextBlock Text="Depo Envanter Yönetimi" FontSize="17" VerticalAlignment="Center" Margin="20 0" FontFamily="Britannic Bold"/>
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem Height="60" Width="260">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Cash" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
+                        <TextBlock Text="Excel Raporu" FontSize="17" VerticalAlignment="Center" Margin="20 0" FontFamily="Britannic Bold"/>
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem Height="60">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="AccountStar" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
+                        <TextBlock Text="Zimmet Raporu" FontSize="17" VerticalAlignment="Center" Margin="20 0" FontFamily="Britannic Bold"/>
+                    </StackPanel>
+                </ListViewItem>
+            </ListView>
+        </Grid>
+
+    </Grid>
+</Window>

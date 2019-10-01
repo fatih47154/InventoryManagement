@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Caliburn.Micro;
+using InventoryManagement.Bll.BusinessLogic;
+using InventoryManagement.Entities.Tables;
+using InventoryManagement.FrontOffice.Views;
 
 namespace InventoryManagement.FrontOffice.ViewModels
 {
@@ -11,6 +14,7 @@ namespace InventoryManagement.FrontOffice.ViewModels
     {
         private string _userName;
         private string _password;
+        private LoginBll LoginBll { get; set; }
 
         public string UserName
         {
@@ -19,6 +23,7 @@ namespace InventoryManagement.FrontOffice.ViewModels
             {
                 _userName = value; 
                 NotifyOfPropertyChange(() => UserName);
+                NotifyOfPropertyChange(() => CanLogIn);
             }
         }
 
@@ -29,13 +34,35 @@ namespace InventoryManagement.FrontOffice.ViewModels
             {
                 _password = value;
                 NotifyOfPropertyChange(() => Password);
+                NotifyOfPropertyChange(() => CanLogIn);
             }
         }
 
-        public void Login(string userName, string password)
+        public bool CanLogIn
         {
-            var a = userName + password;
-            var b = "Deneme";
+            get
+            {
+                var output = UserName?.Length > 0 && Password?.Length > 0;
+
+                return output;
+            }
+        }
+
+        public LoginViewModel()
+        {
+            LoginBll = new LoginBll();
+        }
+
+        public void LogIn()
+        {
+            var user = LoginBll.Login(_userName, _password);
+            var dashboardView = new DashboardView();
+            var loginView = new LoginView();
+            if (user != null)
+            {
+                dashboardView.Show();
+                loginView.Close();
+            }
         }
     }
 }

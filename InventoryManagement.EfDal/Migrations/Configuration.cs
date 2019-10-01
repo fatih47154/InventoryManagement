@@ -10,8 +10,6 @@ namespace InventoryManagement.EfDal.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            AutomaticMigrationDataLossAllowed = false;
-            ContextKey = "InventoryManagement.EfDal.Context.InventoryManagementContext";
         }
 
         protected override void Seed(InventoryManagement.EfDal.Context.InventoryManagementContext context)

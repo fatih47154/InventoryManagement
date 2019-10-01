@@ -40,7 +40,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IDal\ICompanyDal.cs" />
+    <Compile Include="IDal\IDeviceTypeDal.cs" />
+    <Compile Include="IDal\ILocationDal.cs" />
     <Compile Include="IDal\ILoginDal.cs" />
+    <Compile Include="IDal\IMenuDal.cs" />
+    <Compile Include="IDal\IMenuRoleDal.cs" />
+    <Compile Include="IDal\IModelDal.cs" />
+    <Compile Include="IDal\IOperationDal.cs" />
+    <Compile Include="IDal\IOperationTypeDal.cs" />
+    <Compile Include="IDal\IStatusDal.cs" />
+    <Compile Include="IDal\IStoreDal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
