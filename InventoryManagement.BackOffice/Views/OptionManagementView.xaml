@@ -23,21 +23,21 @@
                 </TabItem>
                 <TabItem Header="ŞİRKET YÖNETİMİ" FontSize="16">
                     <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect FadeIn, Duration=0:0:0.8}">
-                        <StackPanel Width="764" Height="440" Background="Green" Orientation="Horizontal">
-                            
+                        <StackPanel Width="764" Height="440" Background="White" Orientation="Horizontal">
+                            <local:CompanyManagementView></local:CompanyManagementView>
                         </StackPanel>
                     </materialDesign:TransitioningContent>
                 </TabItem>
                 <TabItem Header="CİHAZ TÜRÜ YÖNETİMİ" FontSize="16">
                     <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect FadeIn, Duration=0:0:0.8}">
-                        <StackPanel Width="764" Height="440" Background="Green" Orientation="Horizontal">
+                        <StackPanel Width="764" Height="440" Background="White" Orientation="Horizontal">
 
                         </StackPanel>
                     </materialDesign:TransitioningContent>
                 </TabItem>
                 <TabItem Header="MODEL YÖNETİMİ" FontSize="16">
                     <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect FadeIn, Duration=0:0:0.8}">
-                        <StackPanel Width="764" Height="440" Background="Green" Orientation="Horizontal">
+                        <StackPanel Width="764" Height="440" Background="white" Orientation="Horizontal">
 
                         </StackPanel>
                     </materialDesign:TransitioningContent>

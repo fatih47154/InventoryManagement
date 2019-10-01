@@ -23,6 +23,7 @@ namespace InventoryManagement.BackOffice.Views
         public CompanyManagementView()
         {
             InitializeComponent();
+            DataContext = new ViewModels.CompanyManagementViewModel();
         }
     }
 }
