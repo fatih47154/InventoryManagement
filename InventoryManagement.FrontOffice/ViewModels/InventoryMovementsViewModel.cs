@@ -5,7 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Caliburn.Micro;
 using DevExpress.Mvvm;
-using InventoryManagement.EfDal.Context;
+using InventoryManagement.Bll.BusinessLogic;
+using InventoryManagement.Dal.Context;
 using InventoryManagement.Entities.Tables;
 using InventoryManagement.FrontOffice.Models;
 
@@ -13,12 +14,13 @@ namespace InventoryManagement.FrontOffice.ViewModels
 {
     public class InventoryMovementsViewModel : Screen
     {
-        private InventoryManagementContext _inventoryManagementContext;
-        public virtual IList<Operation> Operations { get; protected set; }
-        public virtual IList<Movement> Movements { get; protected set; }
+        private OperationBll OperationBll { get; }
+        private IList<Operation> Operations { get; set; }
+        public IList<Movement> Movements { get; set; }
 
         public InventoryMovementsViewModel()
         {
+            OperationBll = new OperationBll();
             if (!ViewModelBase.IsInDesignMode)
                 InitializeInRuntime();
             else
@@ -26,13 +28,8 @@ namespace InventoryManagement.FrontOffice.ViewModels
         }
         void InitializeInRuntime()
         {
-            _inventoryManagementContext = new InventoryManagementContext();
-            Operations = _inventoryManagementContext.Operations.Include("Location")
-                .Include("Company")
-                .Include("Status")
-                .Include("OperationType")
-                .Include("Store.Model.DeviceType")
-                .Include("User").ToList();
+            Operations = new List<Operation>();
+            Operations = OperationBll.GetAllList();
 
             Movements = new List<Movement>();
             foreach (var item in Operations)

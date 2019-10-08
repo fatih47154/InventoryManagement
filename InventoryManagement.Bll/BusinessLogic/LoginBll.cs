@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using InventoryManagement.EfDal.DataAccess;
+using InventoryManagement.Dal.DataAccess;
 using InventoryManagement.Entities.Tables;
-using InventoryManagement.IEfDal.IDal;
+using InventoryManagement.IDal.IDal;
 
 namespace InventoryManagement.Bll.BusinessLogic
 {

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace InventoryManagement.BackOffice.Models
+namespace InventoryManagement.Entities.Interfaces
 {
-    public class DeviceTypeModel
+    public interface IEntity
     {
     }
 }

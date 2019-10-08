@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Caliburn.Micro;
 using DevExpress.Mvvm;
-using InventoryManagement.EfDal.Context;
+using InventoryManagement.Dal.Context;
 using InventoryManagement.Entities.Tables;
 using InventoryManagement.FrontOffice.Models;
 using Store = InventoryManagement.FrontOffice.Models.Store;
@@ -36,7 +36,7 @@ namespace InventoryManagement.FrontOffice.ViewModels
                     Status = item.Status.Name,
                     Model = item.Store.Model.Name,
                     SerialNumber = item.Store.SerialNumber,
-                    Description = item.description,
+                    Description = item.Description,
                     DeviceType = item.Store.Model.DeviceType.Name,
                     InventoryNumber = item.Store.InventoryNumber,
                     WarrantyStart = item.Store.WarrantyStart,

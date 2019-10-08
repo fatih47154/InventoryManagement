@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Caliburn.Micro;
 using DevExpress.Mvvm;
 using InventoryManagement.BackOffice.Models;
-using InventoryManagement.EfDal.Context;
+using InventoryManagement.Dal.Context;
 using InventoryManagement.Entities.Tables;
 
 namespace InventoryManagement.BackOffice.ViewModels

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace InventoryManagement.BackOffice.ViewModels
 {
-    class ModelManagamentViewModel
+    public class ModelManagamentViewModel
     {
     }
 }

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace InventoryManagement.BackOffice.Models
+namespace InventoryManagement.IDal.IDal
 {
-    public class DeviceTypeModel
+    class ICompanyDal
     {
     }
 }

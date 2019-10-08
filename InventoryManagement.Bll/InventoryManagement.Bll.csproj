@@ -41,7 +41,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstract\Class1.cs" />
     <Compile Include="BusinessLogic\CompanyBll.cs" />
     <Compile Include="BusinessLogic\DeviceTypeBll.cs" />
     <Compile Include="BusinessLogic\LocationBll.cs" />
@@ -55,9 +54,11 @@
     <Compile Include="BusinessLogic\UserBll.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\InventoryManagement.EfDal\InventoryManagement.Dal.csproj">
+    <Folder Include="Abstract\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\InventoryManagement.Dal\InventoryManagement.Dal.csproj">
       <Project>{18122926-d5a8-4736-b27f-573be2cf50ee}</Project>
       <Name>InventoryManagement.Dal</Name>
     </ProjectReference>
@@ -65,8 +66,8 @@
       <Project>{FBC787C2-1CA4-41C6-A9AA-0788624C41E1}</Project>
       <Name>InventoryManagement.Entities</Name>
     </ProjectReference>
-    <ProjectReference Include="..\InventoryManagement.IEfDal\InventoryManagement.IDal.csproj">
-      <Project>{70b9e62f-e052-4974-9d9f-1b5fd12e8a3e}</Project>
+    <ProjectReference Include="..\InventoryManagement.IDal\InventoryManagement.IDal.csproj">
+      <Project>{4b2affda-d014-4fbe-9171-be4206cf7e30}</Project>
       <Name>InventoryManagement.IDal</Name>
     </ProjectReference>
   </ItemGroup>

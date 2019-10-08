@@ -228,7 +228,7 @@
       <Project>{320CEFD5-9FFD-4AB5-8FFE-44BF24189608}</Project>
       <Name>InventoryManagement.Bll</Name>
     </ProjectReference>
-    <ProjectReference Include="..\InventoryManagement.EfDal\InventoryManagement.Dal.csproj">
+    <ProjectReference Include="..\InventoryManagement.Dal\InventoryManagement.Dal.csproj">
       <Project>{18122926-d5a8-4736-b27f-573be2cf50ee}</Project>
       <Name>InventoryManagement.Dal</Name>
     </ProjectReference>

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Caliburn.Micro;
 using DevExpress.Mvvm;
-using InventoryManagement.EfDal.Context;
+using InventoryManagement.Dal.Context;
 using InventoryManagement.Entities.Tables;
 using InventoryManagement.BackOffice.Models;
 

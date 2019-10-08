@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace InventoryManagement.BackOffice.ViewModels
 {
-    class DeviceTypeModelView
+    public class DeviceTypeModelView
     {
     }
 }
