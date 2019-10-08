@@ -15,7 +15,7 @@ namespace InventoryManagement.FrontOffice.ViewModels
     {
         private InventoryManagementContext _inventoryManagementContext;
         public virtual IList<Operation> Operations { get; protected set; }
-        public virtual IList<Movement> Movements { get; set; }
+        public virtual IList<Movement> Movements { get; protected set; }
 
         public InventoryMovementsViewModel()
         {
@@ -27,7 +27,13 @@ namespace InventoryManagement.FrontOffice.ViewModels
         void InitializeInRuntime()
         {
             _inventoryManagementContext = new InventoryManagementContext();
-            Operations = _inventoryManagementContext.Operations.ToList();
+            Operations = _inventoryManagementContext.Operations.Include("Location")
+                .Include("Company")
+                .Include("Status")
+                .Include("OperationType")
+                .Include("Store.Model.DeviceType")
+                .Include("User").ToList();
+
             Movements = new List<Movement>();
             foreach (var item in Operations)
             {
@@ -38,7 +44,7 @@ namespace InventoryManagement.FrontOffice.ViewModels
                     Surname = item.Surname,
                     Model = item.Store.Model.Name,
                     SerialNumber = item.Store.SerialNumber,
-                    Description = item.description,
+                    Description = item.Description,
                     DeviceType = item.Store.Model.DeviceType.Name,
                     InventoryNumber = item.Store.InventoryNumber,
                     OperationType = item.OperationType.Name,
@@ -52,7 +58,7 @@ namespace InventoryManagement.FrontOffice.ViewModels
 
         void InitializeInDesingMode()
         {
-            
+             
         }
     }
 }

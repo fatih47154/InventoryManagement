@@ -119,6 +119,7 @@
     <Compile Include="Models\Movement.cs" />
     <Compile Include="Models\Store.cs" />
     <Compile Include="Models\Update.cs" />
+    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="ViewModels\DashboardViewModel.cs" />
     <Compile Include="ViewModels\InventoryManagementViewModel.cs" />
     <Compile Include="ViewModels\InventoryMovementsViewModel.cs" />

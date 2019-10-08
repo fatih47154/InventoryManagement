@@ -16,6 +16,7 @@ namespace InventoryManagement.EfDal.Context
         public InventoryManagementContext() : base("InventoryManagementDatabase")
         {
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<InventoryManagementContext, InventoryManagement.EfDal.Migrations.Configuration>());
+            this.Configuration.LazyLoadingEnabled = false;
         }
         public DbSet<DeviceType> DeviceTypes { get; set; }
         public DbSet<Location> Locations { get; set; }

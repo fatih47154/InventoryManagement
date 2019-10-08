@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace InventoryManagement.Bll.BusinessLogic
+namespace InventoryManagement.IDal.IRepository
 {
-    public class OperationBll
+    public interface IEntity
     {
-
     }
 }

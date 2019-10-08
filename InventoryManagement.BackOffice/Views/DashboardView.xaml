@@ -68,6 +68,21 @@
                     </StackPanel>
                 </ListViewItem>
             </ListView>
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Orientation="Horizontal" Margin="0,30">
+            <StackPanel VerticalAlignment="Center" Margin="5,0">
+                <Ellipse Height="10" Width="10" HorizontalAlignment="left" VerticalAlignment="Bottom" Fill="#FF23FD00"/>
+            </StackPanel>
+
+            <TextBlock x:Name="UserName" TextWrapping="Wrap" FontFamily="Britannic Bold" FontSize="18" FontWeight="Bold">
+                <Run Foreground="White">Fatih Karaüzüm</Run>
+            </TextBlock>
+            </StackPanel>
+
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Orientation="Horizontal" Margin="0,45">
+                <TextBlock TextWrapping="Wrap" FontFamily="Britannic Bold" FontSize="18" FontWeight="Bold">
+                    <Run Foreground="White">ADMİN PANELİ</Run>
+                </TextBlock>
+            </StackPanel>
         </Grid>
 
     </Grid>

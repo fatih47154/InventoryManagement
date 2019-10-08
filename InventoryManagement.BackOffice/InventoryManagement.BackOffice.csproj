@@ -101,12 +101,16 @@
     <Compile Include="Interface\IHavePassword.cs" />
     <Compile Include="Models\CompanyModel.cs" />
     <Compile Include="Models\DataModel.cs" />
+    <Compile Include="Models\DeviceModelModel.cs" />
+    <Compile Include="Models\DeviceTypeModel.cs" />
     <Compile Include="Models\LocationModel.cs" />
     <Compile Include="Models\UsersModel.cs" />
     <Compile Include="ViewModels\CompanyManagementViewModel.cs" />
     <Compile Include="ViewModels\DashboardViewModel.cs" />
     <Compile Include="ViewModels\DataManagementViewModel.cs" />
+    <Compile Include="ViewModels\DeviceTypeModelView.cs" />
     <Compile Include="ViewModels\LocationManagementViewModel.cs" />
+    <Compile Include="ViewModels\ModelManagamentViewModel.cs" />
     <Compile Include="ViewModels\UserManagementViewModel.cs" />
     <Compile Include="Views\CompanyManagementView.xaml.cs">
       <DependentUpon>CompanyManagementView.xaml</DependentUpon>

@@ -5,21 +5,24 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using InventoryManagement.IDal.IRepository;
 
 namespace InventoryManagement.Entities.Abstract
 {
-    public abstract class ABaseEntity
+    public abstract class ABaseEntity: IEntity
     {
         [DisplayFormat(DataFormatString = "{0:dd MM yyyy}")]
-        [DisplayName("OLUŞTURMA TARİHİ")]
+        [DisplayName("Oluşturma Tarihi")]
         public virtual DateTime? CreatedDate { get; set; }
 
         [DisplayFormat(DataFormatString = "{0:dd MM yyyy}")]
-        [DisplayName("GÜNCELLEME TARİHİ")]
+        [DisplayName("Güncelleme Tarihi")]
         public virtual DateTime? UpdatededDate { get; set; }
 
+        [DisplayName("Aktif")]
         public bool? IsActive { get; set; }
 
-        public string description { get; set; }
+        [DisplayName("Açıklama")]
+        public string Description { get; set; }
     }
 }

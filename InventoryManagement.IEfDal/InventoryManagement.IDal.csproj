@@ -7,8 +7,8 @@
     <ProjectGuid>{70B9E62F-E052-4974-9D9F-1B5FD12E8A3E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>InventoryManagement.IEfDal</RootNamespace>
-    <AssemblyName>InventoryManagement.IEfDal</AssemblyName>
+    <RootNamespace>InventoryManagement.IDal</RootNamespace>
+    <AssemblyName>InventoryManagement.IDal</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,6 +30,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\InventoryManagement.Entities\bin\Debug\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\InventoryManagement.Entities\bin\Debug\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -51,13 +58,9 @@
     <Compile Include="IDal\IOperationTypeDal.cs" />
     <Compile Include="IDal\IStatusDal.cs" />
     <Compile Include="IDal\IStoreDal.cs" />
+    <Compile Include="IRepository\IEntity.cs" />
+    <Compile Include="IRepository\IEntityRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\InventoryManagement.Entities\InventoryManagement.Entities.csproj">
-      <Project>{FBC787C2-1CA4-41C6-A9AA-0788624C41E1}</Project>
-      <Name>InventoryManagement.Entities</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
