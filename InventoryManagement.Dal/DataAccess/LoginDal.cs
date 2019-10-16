@@ -16,7 +16,7 @@ namespace InventoryManagement.Dal.DataAccess
         public User Login(string userName, string password)
         {
             var db = new InventoryManagementContext();
-            var resultUser = db.Users.SingleOrDefault(x => x.Username == userName && x.Password == password);
+            var resultUser = db.Users.SingleOrDefault(x => x.Username == userName && x.Password == password && x.IsActive == true);
 
             return resultUser;
         }

@@ -7,6 +7,7 @@ using System.Windows;
 using Caliburn.Micro;
 using GalaSoft.MvvmLight.CommandWpf;
 using InventoryManagement.Bll.BusinessLogic;
+using InventoryManagement.Bll.Statics;
 using InventoryManagement.Entities.Tables;
 using InventoryManagement.FrontOffice.Interface;
 using InventoryManagement.FrontOffice.Views;
@@ -18,6 +19,7 @@ namespace InventoryManagement.FrontOffice.ViewModels
         private string _userName;
         private string _password;
         private LoginBll LoginBll { get; set; }
+        public RelayCommand<IClosable> LogInCommand { get; private set; }
 
         public string UserName
         {
@@ -46,7 +48,6 @@ namespace InventoryManagement.FrontOffice.ViewModels
             get
             {
                 var output = UserName?.Length > 0 && Password?.Length > 0;
-
                 return output;
             }
         }
@@ -54,20 +55,24 @@ namespace InventoryManagement.FrontOffice.ViewModels
         public LoginViewModel()
         {
             LoginBll = new LoginBll();
+            this.LogInCommand = new RelayCommand<IClosable>(this.LogIn);
         }
 
-        public void LogIn()
+        public void LogIn(IClosable loginWindow)
         {
             var user = LoginBll.Login(_userName, _password);
-            var dashboardView = new DashboardView();
             
             if (user != null)
             {
+                LoggedInUser.LoggedUser = user;
+
+                loginWindow.Close();
+                var dashboardView = new DashboardView();
                 dashboardView.Show();
             }
             else
             {
-                
+                MessageBox.Show("Girdiğiniz Kullanıcı Bilgileri Eşleşmiyor", "Giriş Hatası", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
 

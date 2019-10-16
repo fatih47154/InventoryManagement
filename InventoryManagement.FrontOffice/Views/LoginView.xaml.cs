@@ -19,17 +19,12 @@ namespace InventoryManagement.FrontOffice.Views
     /// <summary>
     /// Interaction logic for LoginView.xaml
     /// </summary>
-    public partial class LoginView : Window
+    public partial class LoginView : Window, IClosable
     {
         public LoginView()
         {
             InitializeComponent();
             DataContext = new LoginViewModel();   
-        }
-
-        private void LogIn_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
         }
     }
 }
