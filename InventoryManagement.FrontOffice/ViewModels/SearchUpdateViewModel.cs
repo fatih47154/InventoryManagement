@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Caliburn.Micro;
 using DevExpress.Mvvm;
+using InventoryManagement.Bll.BusinessLogic;
 using InventoryManagement.Dal.Context;
 using InventoryManagement.Entities.Tables;
 using InventoryManagement.FrontOffice.Models;
@@ -13,11 +14,12 @@ namespace InventoryManagement.FrontOffice.ViewModels
 {
     public class SearchUpdateViewModel : Screen
     {
-        private InventoryManagementContext _inventoryManagementContext;
-        public virtual IList<Operation> Operations { get; protected set; }
+        private OperationBll OperationBll { get; }
+        private IList<Operation> Operations { get; set; }
         public virtual IList<Update> Updates { get; set; }
         public SearchUpdateViewModel()
         {
+            OperationBll = new OperationBll();
             if (!ViewModelBase.IsInDesignMode)
                 InitializeInRuntime();
             else
@@ -25,14 +27,15 @@ namespace InventoryManagement.FrontOffice.ViewModels
         }
         void InitializeInRuntime()
         {
-            _inventoryManagementContext = new InventoryManagementContext();
-            Operations = _inventoryManagementContext.Operations.Where(x => x.Status.Name == "Kullanımda").ToList();
+            Operations = new List<Operation>();
+            Operations = OperationBll.GetAllList(x => x.Store.Status.Name == "Kullanımda");
+            
             Updates = new List<Update>();
             foreach (var item in Operations)
             {
                 var update = new Update()
                 {
-                    Status = item.Status.Name,
+                    Status = item.Store.Status.Name,
                     Name = item.Name,
                     Surname = item.Surname,
                     Model = item.Store.Model.Name,

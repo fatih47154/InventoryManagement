@@ -9,8 +9,6 @@ namespace InventoryManagement.FrontOffice.Models
 {
     public class Store
     {
-        [DisplayName("Durumu")]
-        public string Status { get; set; }
         [DisplayName("Envanter Numarası")]
         public string InventoryNumber { get; set; }
         [DisplayName("Seri Numarası")]
@@ -21,6 +19,8 @@ namespace InventoryManagement.FrontOffice.Models
         public string Model { get; set; }
         [DisplayName("Garanti Başlangıç Zamanı")]
         public DateTime WarrantyStart { get; set; }
+        [DisplayName("İşlem Zamanı")]
+        public DateTime OperationTime { get; set; }
         [DisplayName("Açıklama")]
         public string Description { get; set; }
     }

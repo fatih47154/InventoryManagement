@@ -36,7 +36,7 @@ namespace InventoryManagement.FrontOffice.ViewModels
             {
                 var movements = new Movement
                 {
-                    Status = item.Status.Name,
+                    Status = item.Store.Status.Name,
                     Name = item.Name,
                     Surname = item.Surname,
                     Model = item.Store.Model.Name,

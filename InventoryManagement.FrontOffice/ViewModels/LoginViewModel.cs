@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using Caliburn.Micro;
+using GalaSoft.MvvmLight.CommandWpf;
 using InventoryManagement.Bll.BusinessLogic;
 using InventoryManagement.Entities.Tables;
+using InventoryManagement.FrontOffice.Interface;
 using InventoryManagement.FrontOffice.Views;
 
 namespace InventoryManagement.FrontOffice.ViewModels
@@ -57,12 +60,20 @@ namespace InventoryManagement.FrontOffice.ViewModels
         {
             var user = LoginBll.Login(_userName, _password);
             var dashboardView = new DashboardView();
-            var loginView = new LoginView();
+            
             if (user != null)
             {
                 dashboardView.Show();
-                loginView.Close();
             }
+            else
+            {
+                
+            }
+        }
+
+        public void Close()
+        {
+            Application.Current.Shutdown();
         }
     }
 }

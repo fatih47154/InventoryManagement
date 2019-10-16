@@ -16,7 +16,7 @@ namespace InventoryManagement.Dal.Context
         public InventoryManagementContext() : base("InventoryManagementDatabase")
         {
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<InventoryManagementContext, Configuration>());
-            this.Configuration.LazyLoadingEnabled = false;
+            Configuration.LazyLoadingEnabled = false;
         }
         public DbSet<DeviceType> DeviceTypes { get; set; }
         public DbSet<Location> Locations { get; set; }

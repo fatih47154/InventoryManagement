@@ -5,20 +5,21 @@ using System.Text;
 using System.Threading.Tasks;
 using Caliburn.Micro;
 using DevExpress.Mvvm;
+using InventoryManagement.Bll.BusinessLogic;
 using InventoryManagement.Dal.Context;
 using InventoryManagement.Entities.Tables;
-using InventoryManagement.FrontOffice.Models;
-using Store = InventoryManagement.FrontOffice.Models.Store;
+using Store = InventoryManagement.Entities.Tables.Store;
 
 namespace InventoryManagement.FrontOffice.ViewModels
 {
     public class SearchStoreViewModel : Screen
     {
-        private InventoryManagementContext _inventoryManagementContext;
-        public virtual IList<Operation> Operations { get; protected set; }
-        public virtual IList<InventoryManagement.FrontOffice.Models.Store> Stores { get; set; }
+        private StoreBll StoreBll { get; }
+        public virtual IList<Store> Stores { get; protected set; }
+        public virtual IList<Models.Store> StoresModel { get; set; }
         public SearchStoreViewModel()
         {
+            StoreBll = new StoreBll();
             if (!ViewModelBase.IsInDesignMode)
                 InitializeInRuntime();
             else
@@ -26,22 +27,22 @@ namespace InventoryManagement.FrontOffice.ViewModels
         }
         void InitializeInRuntime()
         {
-            _inventoryManagementContext = new InventoryManagementContext();
-            Operations = _inventoryManagementContext.Operations.Where(x => x.Status.Name == "Kullanımda").ToList();
-            Stores = new List<Store>();
-            foreach (var item in Operations)
+            Stores = StoreBll.GetAllList();
+
+            StoresModel = new List<Models.Store>();
+            foreach (var item in Stores)
             {
-                var store = new Store()
+                var store = new Models.Store()
                 {
-                    Status = item.Status.Name,
-                    Model = item.Store.Model.Name,
-                    SerialNumber = item.Store.SerialNumber,
-                    Description = item.Description,
-                    DeviceType = item.Store.Model.DeviceType.Name,
-                    InventoryNumber = item.Store.InventoryNumber,
-                    WarrantyStart = item.Store.WarrantyStart,
+                    OperationTime = item.OperationTime,
+                    InventoryNumber = item.InventoryNumber,
+                    SerialNumber = item.SerialNumber,
+                    WarrantyStart = item.WarrantyStart,
+                    Model = item.Model.Name,
+                    DeviceType = item.Model.DeviceType.Name,
+                    Description = item.Description
                 };
-                Stores.Add(store);
+                StoresModel.Add(store);
             }
         }
 

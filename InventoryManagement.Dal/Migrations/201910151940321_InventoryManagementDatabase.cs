@@ -3,7 +3,7 @@ namespace InventoryManagement.Dal.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InventoryContextDatabase : DbMigration
+    public partial class InventoryManagementDatabase : DbMigration
     {
         public override void Up()
         {
@@ -17,7 +17,7 @@ namespace InventoryManagement.Dal.Migrations
                         CreatedDate = c.DateTime(),
                         UpdatededDate = c.DateTime(),
                         IsActive = c.Boolean(),
-                        description = c.String(),
+                        Description = c.String(),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -34,11 +34,10 @@ namespace InventoryManagement.Dal.Migrations
                         StoreId = c.Guid(nullable: false),
                         UserId = c.Guid(nullable: false),
                         OperationTypeId = c.Guid(nullable: false),
-                        StatusId = c.Guid(nullable: false),
                         CreatedDate = c.DateTime(),
                         UpdatededDate = c.DateTime(),
                         IsActive = c.Boolean(),
-                        description = c.String(),
+                        Description = c.String(),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Company", t => t.CompanyId)
@@ -46,13 +45,11 @@ namespace InventoryManagement.Dal.Migrations
                 .ForeignKey("dbo.OperationType", t => t.OperationTypeId)
                 .ForeignKey("dbo.Store", t => t.StoreId)
                 .ForeignKey("dbo.User", t => t.UserId)
-                .ForeignKey("dbo.Status", t => t.StatusId)
                 .Index(t => t.LocationId)
                 .Index(t => t.CompanyId)
                 .Index(t => t.StoreId)
                 .Index(t => t.UserId)
-                .Index(t => t.OperationTypeId)
-                .Index(t => t.StatusId);
+                .Index(t => t.OperationTypeId);
             
             CreateTable(
                 "dbo.Location",
@@ -63,7 +60,7 @@ namespace InventoryManagement.Dal.Migrations
                         CreatedDate = c.DateTime(),
                         UpdatededDate = c.DateTime(),
                         IsActive = c.Boolean(),
-                        description = c.String(),
+                        Description = c.String(),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -76,7 +73,7 @@ namespace InventoryManagement.Dal.Migrations
                         CreatedDate = c.DateTime(),
                         UpdatededDate = c.DateTime(),
                         IsActive = c.Boolean(),
-                        description = c.String(),
+                        Description = c.String(),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -89,21 +86,22 @@ namespace InventoryManagement.Dal.Migrations
                         OperationTime = c.DateTime(nullable: false),
                         InventoryNumber = c.String(maxLength: 20),
                         WarrantyStart = c.DateTime(nullable: false),
+                        Kullanimda = c.Boolean(nullable: false),
                         ModelId = c.Guid(nullable: false),
                         UserId = c.Guid(nullable: false),
-                        OperationTypeId = c.Guid(nullable: false),
+                        StatusId = c.Guid(nullable: false),
                         CreatedDate = c.DateTime(),
                         UpdatededDate = c.DateTime(),
                         IsActive = c.Boolean(),
-                        description = c.String(),
+                        Description = c.String(),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Model", t => t.ModelId)
-                .ForeignKey("dbo.OperationType", t => t.OperationTypeId)
+                .ForeignKey("dbo.Status", t => t.StatusId)
                 .ForeignKey("dbo.User", t => t.UserId)
                 .Index(t => t.ModelId)
                 .Index(t => t.UserId)
-                .Index(t => t.OperationTypeId);
+                .Index(t => t.StatusId);
             
             CreateTable(
                 "dbo.Model",
@@ -115,7 +113,7 @@ namespace InventoryManagement.Dal.Migrations
                         CreatedDate = c.DateTime(),
                         UpdatededDate = c.DateTime(),
                         IsActive = c.Boolean(),
-                        description = c.String(),
+                        Description = c.String(),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.DeviceType", t => t.DeviceTypeId)
@@ -130,7 +128,20 @@ namespace InventoryManagement.Dal.Migrations
                         CreatedDate = c.DateTime(),
                         UpdatededDate = c.DateTime(),
                         IsActive = c.Boolean(),
-                        description = c.String(),
+                        Description = c.String(),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.Status",
+                c => new
+                    {
+                        Id = c.Guid(nullable: false, identity: true),
+                        Name = c.String(maxLength: 200),
+                        CreatedDate = c.DateTime(),
+                        UpdatededDate = c.DateTime(),
+                        IsActive = c.Boolean(),
+                        Description = c.String(),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -147,34 +158,20 @@ namespace InventoryManagement.Dal.Migrations
                         CreatedDate = c.DateTime(),
                         UpdatededDate = c.DateTime(),
                         IsActive = c.Boolean(),
-                        description = c.String(),
+                        Description = c.String(),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Company", t => t.CompanyId)
                 .Index(t => t.CompanyId);
             
-            CreateTable(
-                "dbo.Status",
-                c => new
-                    {
-                        Id = c.Guid(nullable: false, identity: true),
-                        Name = c.String(maxLength: 200),
-                        CreatedDate = c.DateTime(),
-                        UpdatededDate = c.DateTime(),
-                        IsActive = c.Boolean(),
-                        description = c.String(),
-                    })
-                .PrimaryKey(t => t.Id);
-            
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.Operation", "StatusId", "dbo.Status");
             DropForeignKey("dbo.Store", "UserId", "dbo.User");
             DropForeignKey("dbo.Operation", "UserId", "dbo.User");
             DropForeignKey("dbo.User", "CompanyId", "dbo.Company");
-            DropForeignKey("dbo.Store", "OperationTypeId", "dbo.OperationType");
+            DropForeignKey("dbo.Store", "StatusId", "dbo.Status");
             DropForeignKey("dbo.Operation", "StoreId", "dbo.Store");
             DropForeignKey("dbo.Store", "ModelId", "dbo.Model");
             DropForeignKey("dbo.Model", "DeviceTypeId", "dbo.DeviceType");
@@ -183,17 +180,16 @@ namespace InventoryManagement.Dal.Migrations
             DropForeignKey("dbo.Operation", "CompanyId", "dbo.Company");
             DropIndex("dbo.User", new[] { "CompanyId" });
             DropIndex("dbo.Model", new[] { "DeviceTypeId" });
-            DropIndex("dbo.Store", new[] { "OperationTypeId" });
+            DropIndex("dbo.Store", new[] { "StatusId" });
             DropIndex("dbo.Store", new[] { "UserId" });
             DropIndex("dbo.Store", new[] { "ModelId" });
-            DropIndex("dbo.Operation", new[] { "StatusId" });
             DropIndex("dbo.Operation", new[] { "OperationTypeId" });
             DropIndex("dbo.Operation", new[] { "UserId" });
             DropIndex("dbo.Operation", new[] { "StoreId" });
             DropIndex("dbo.Operation", new[] { "CompanyId" });
             DropIndex("dbo.Operation", new[] { "LocationId" });
-            DropTable("dbo.Status");
             DropTable("dbo.User");
+            DropTable("dbo.Status");
             DropTable("dbo.DeviceType");
             DropTable("dbo.Model");
             DropTable("dbo.Store");

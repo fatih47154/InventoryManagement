@@ -60,6 +60,7 @@
     <Compile Include="IDal\IOperationTypeDal.cs" />
     <Compile Include="IDal\IStatusDal.cs" />
     <Compile Include="IDal\IStoreDal.cs" />
+    <Compile Include="IRepository\IBusinessRepository.cs" />
     <Compile Include="IRepository\IEntityRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

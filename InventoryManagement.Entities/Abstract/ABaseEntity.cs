@@ -13,7 +13,7 @@ namespace InventoryManagement.Entities.Abstract
     {
         [DisplayFormat(DataFormatString = "{0:dd MM yyyy}")]
         [DisplayName("Oluşturma Tarihi")]
-        public virtual DateTime? CreatedDate { get; set; }
+        public virtual DateTime? CreatedDate { get; set; } = DateTime.Now;
 
         [DisplayFormat(DataFormatString = "{0:dd MM yyyy}")]
         [DisplayName("Güncelleme Tarihi")]

@@ -12,7 +12,7 @@
         <x:Type TypeName="viewModels:SearchStoreViewModel"/>
     </UserControl.DataContext>
     <Grid>
-        <dxg:GridControl ItemsSource="{Binding Stores}" AutoGenerateColumns="AddNew" EnableSmartColumnsGeneration="True" SelectionMode="MultipleRow">
+        <dxg:GridControl ItemsSource="{Binding StoresModel}" AutoGenerateColumns="AddNew" EnableSmartColumnsGeneration="True" SelectionMode="MultipleRow">
             <dxg:GridControl.View>
                 <dxg:TableView AllowPerPixelScrolling="True" ShowTotalSummary="True" AllowEditing="True" FontFamily="Britannic Bold" FixedLineWidth="3" AllowDragDrop="False" AllowScrollingOnDrag="True" GroupSummaryDisplayMode="Default" SummariesIgnoreNullValues="True" AllowPrintColumnHeaderImage="True" EditorButtonShowMode="ShowForFocusedCell" FontSize="16" />
             </dxg:GridControl.View>

@@ -13,6 +13,6 @@ namespace InventoryManagement.Entities.Tables
         public String Name { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public ICollection<Operation> Operations { get; set; }
+        public ICollection<Store> Stores { get; set; }
     }
 }

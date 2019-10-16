@@ -15,21 +15,62 @@ namespace InventoryManagement.Bll.BusinessLogic
     public class OperationBll: IOperationDal
     {
         private OperationDal OperationDal { get; }
+        private InventoryManagementContext InventoryManagementContext { get; set; }
+        private Expression<Func<Operation, object>>[] IncludeExpressions { get; }
 
         public OperationBll()
         {
             OperationDal = new OperationDal();
-        }
-
-        public IList<Operation> GetAllList()
-        {
-            return OperationDal.GetAllList(new InventoryManagementContext(), filterExpression => filterExpression.IsActive == true,
+            InventoryManagementContext = new InventoryManagementContext();
+            IncludeExpressions = new Expression<Func<Operation, object>>[6] {
                 properties => properties.User,
                 properties => properties.Location,
                 properties => properties.Company,
-                properties => properties.Status,
+                properties => properties.Store.Status,
                 properties => properties.Store.Model.DeviceType,
-                properties => properties.OperationType);
+                properties => properties.OperationType
+
+            };
+        }
+        
+        public bool AddOrUpdate(Operation entity)
+        {
+            var result = OperationDal.AddOrUpdate(InventoryManagementContext, entity);
+            OperationDal.Save(InventoryManagementContext);
+            return result;
+        }
+
+        public bool Delete(Func<Operation, bool> filter)
+        {
+            try
+            {
+                OperationDal.Delete(InventoryManagementContext, filter);
+                OperationDal.Save(InventoryManagementContext);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public IList<Operation> GetAllList(Func<Operation, bool> filter = null)
+        {
+            if (filter != null)
+            {
+                Func<Operation, bool> filterExpression = (x => x.IsActive == true) + filter;
+                return OperationDal.GetAllList(InventoryManagementContext, filterExpression,
+                    IncludeExpressions);
+            }
+
+            return OperationDal.GetAllList(InventoryManagementContext, filterExpression => filterExpression.IsActive == true,
+                IncludeExpressions);
+        }
+
+        public Operation GetByFilter(Func<Operation, bool> filter)
+        {
+            return OperationDal.GetByFilter(InventoryManagementContext, filter,
+                IncludeExpressions);
         }
     }
 }

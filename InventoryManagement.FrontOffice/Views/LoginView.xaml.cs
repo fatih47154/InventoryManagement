@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using InventoryManagement.FrontOffice.Interface;
+using InventoryManagement.FrontOffice.ViewModels;
 
 namespace InventoryManagement.FrontOffice.Views
 {
@@ -22,6 +24,12 @@ namespace InventoryManagement.FrontOffice.Views
         public LoginView()
         {
             InitializeComponent();
+            DataContext = new LoginViewModel();   
+        }
+
+        private void LogIn_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }
