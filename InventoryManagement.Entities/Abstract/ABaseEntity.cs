@@ -20,7 +20,7 @@ namespace InventoryManagement.Entities.Abstract
         public virtual DateTime? UpdatededDate { get; set; }
 
         [DisplayName("Aktif")]
-        public bool? IsActive { get; set; }
+        public bool? IsActive { get; set; } = true;
 
         [DisplayName("Açıklama")]
         public string Description { get; set; }

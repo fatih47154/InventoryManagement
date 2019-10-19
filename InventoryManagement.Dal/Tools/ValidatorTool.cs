@@ -24,7 +24,7 @@ namespace InventoryManagement.Dal.Tools
                     message += err.ErrorMessage + System.Environment.NewLine;
                 }
 
-                MessageBox.Show(message);
+                MessageBox.Show(message, "Bilgilendirme Mesajı", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 result = false;
             }
             return result;

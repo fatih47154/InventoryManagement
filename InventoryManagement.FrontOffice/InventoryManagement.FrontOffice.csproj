@@ -137,10 +137,14 @@
     <Compile Include="Helper\PasswordBoxHelper.cs" />
     <Compile Include="Interface\IClosable.cs" />
     <Compile Include="Interface\IHavePassword.cs" />
+    <Compile Include="Models\CompanyModel.cs" />
+    <Compile Include="Models\LocationModel.cs" />
     <Compile Include="Models\Movement.cs" />
     <Compile Include="Models\Store.cs" />
+    <Compile Include="Models\ToUserFromStoreModel.cs" />
     <Compile Include="Models\Update.cs" />
     <Compile Include="Properties\Annotations.cs" />
+    <Compile Include="ViewModels\ChangeUserViewModel.cs" />
     <Compile Include="ViewModels\DashboardViewModel.cs" />
     <Compile Include="ViewModels\InventoryManagementViewModel.cs" />
     <Compile Include="ViewModels\InventoryMovementsViewModel.cs" />
@@ -148,6 +152,11 @@
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\SearchStoreViewModel.cs" />
     <Compile Include="ViewModels\SearchUpdateViewModel.cs" />
+    <Compile Include="ViewModels\ToStoreFromUserViewModel.cs" />
+    <Compile Include="ViewModels\ToUserFromStoreViewModel.cs" />
+    <Compile Include="Views\ChangeUserView.xaml.cs">
+      <DependentUpon>ChangeUserView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\DashboardView.xaml.cs">
       <DependentUpon>DashboardView.xaml</DependentUpon>
     </Compile>
@@ -182,6 +191,16 @@
     <Compile Include="Views\StoreInventoryManagementView.xaml.cs">
       <DependentUpon>StoreInventoryManagementView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ToStoreFromUser.xaml.cs">
+      <DependentUpon>ToStoreFromUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ToUserFromStoreView.xaml.cs">
+      <DependentUpon>ToUserFromStoreView.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Views\ChangeUserView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\DashboardView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -219,6 +238,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\StoreInventoryManagementView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ToStoreFromUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ToUserFromStoreView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

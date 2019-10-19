@@ -18,8 +18,8 @@ namespace InventoryManagement.FrontOffice.ViewModels
     {
         private string _userName;
         private string _password;
-        private LoginBll LoginBll { get; set; }
         public RelayCommand<IClosable> LogInCommand { get; private set; }
+        private LoginBll LoginBll { get; set; }
 
         public string UserName
         {
@@ -55,7 +55,7 @@ namespace InventoryManagement.FrontOffice.ViewModels
         public LoginViewModel()
         {
             LoginBll = new LoginBll();
-            this.LogInCommand = new RelayCommand<IClosable>(this.LogIn);
+            this.LogInCommand = new RelayCommand<IClosable>(LogIn);
         }
 
         public void LogIn(IClosable loginWindow)

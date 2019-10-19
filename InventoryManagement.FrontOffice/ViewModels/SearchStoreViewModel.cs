@@ -27,7 +27,7 @@ namespace InventoryManagement.FrontOffice.ViewModels
         }
         void InitializeInRuntime()
         {
-            Stores = StoreBll.GetAllList();
+            Stores = StoreBll.GetAllList(x => x.Kullanimda == false);
 
             StoresModel = new List<Models.Store>();
             foreach (var item in Stores)
