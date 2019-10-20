@@ -10,7 +10,7 @@ using InventoryManagement.Entities.Validations;
 
 namespace InventoryManagement.Dal.DataAccess
 {
-    public class CompanyDal: EntityRepositoryBase<InventoryManagementContext, Company, CompanyValidator>
+    public class CompanyDal: EntityRepositoryBase<InventoryManagementContext, Company, CompanyValidator>, Interfaces.IDal
     {
     }
 }

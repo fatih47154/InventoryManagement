@@ -73,6 +73,7 @@
     <Compile Include="DataAccess\OperationTypeDal.cs" />
     <Compile Include="DataAccess\StatusDal.cs" />
     <Compile Include="DataAccess\StoreDal.cs" />
+    <Compile Include="Interfaces\IDal.cs" />
     <Compile Include="Migrations\201910151940321_InventoryManagementDatabase.cs" />
     <Compile Include="Migrations\201910151940321_InventoryManagementDatabase.Designer.cs">
       <DependentUpon>201910151940321_InventoryManagementDatabase.cs</DependentUpon>

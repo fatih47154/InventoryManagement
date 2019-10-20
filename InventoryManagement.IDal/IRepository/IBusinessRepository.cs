@@ -7,7 +7,8 @@ using InventoryManagement.Entities.Interfaces;
 
 namespace InventoryManagement.IDal.IRepository
 {
-    public interface IBusinessRepository<TEntity> where TEntity: class, IEntity
+    public interface IBusinessRepository<TEntity> 
+        where TEntity: class, IEntity
     {
         bool AddOrUpdate(TEntity entity);
         bool Delete(Func<TEntity, bool> filter);
