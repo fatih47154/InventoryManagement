@@ -137,12 +137,14 @@
     <Compile Include="Helper\PasswordBoxHelper.cs" />
     <Compile Include="Interface\IClosable.cs" />
     <Compile Include="Interface\IHavePassword.cs" />
+    <Compile Include="Models\ChangeUserModel.cs" />
     <Compile Include="Models\CompanyModel.cs" />
     <Compile Include="Models\LocationModel.cs" />
     <Compile Include="Models\Movement.cs" />
     <Compile Include="Models\Store.cs" />
     <Compile Include="Models\ToUserFromStoreModel.cs" />
     <Compile Include="Models\Update.cs" />
+    <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="ViewModels\ChangeUserViewModel.cs" />
     <Compile Include="ViewModels\DashboardViewModel.cs" />

@@ -9,11 +9,12 @@ using InventoryManagement.FrontOffice.Annotations;
 
 namespace InventoryManagement.FrontOffice.Models
 {
-    public class CompanyModel: INotifyPropertyChanged
+    public class UserModel: INotifyPropertyChanged
     {
         private Guid _id;
         private string _name;
-        private int _number;
+        private string _surname;
+        private string _nameSurname;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -37,13 +38,23 @@ namespace InventoryManagement.FrontOffice.Models
             }
         }
 
-        public int Number
+        public string Surname
         {
-            get { return _number; }
+            get { return _surname; }
             set
             {
-                _number = value;
-                OnPropertyChanged("Number");
+                _surname = value;
+                OnPropertyChanged("Surname");
+            }
+        }
+
+        public string NameSurname
+        {
+            get { return _name + " " + _surname; }
+            set
+            {
+                _nameSurname = value;
+                OnPropertyChanged("NameSurname");
             }
         }
 

@@ -22,6 +22,7 @@ namespace InventoryManagement.FrontOffice.Views
         public DashboardView()
         {
             InitializeComponent();
+            DataContext = new ViewModels.DashboardViewModel();
         }
 
         private void ButtonFechar_Click(object sender, RoutedEventArgs e)

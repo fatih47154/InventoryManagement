@@ -18,11 +18,15 @@ namespace InventoryManagement.Bll.Repository
     {
         private TDal Dal { get; }
         private TContext Context { get; }
+        protected virtual Expression<Func<TEntity, object>>[] IncludeExpressions { get; set; }
         protected BusinessRepositoryBase()
         {
             Dal = new TDal();
             Context = new TContext();
+            IncludeExpressionDefine();
         }
+
+        protected virtual void IncludeExpressionDefine() { }
 
         public bool AddOrUpdate(TEntity entity)
         {
@@ -56,15 +60,15 @@ namespace InventoryManagement.Bll.Repository
             if (filter != null)
             {
                 Func<TEntity, bool> filterExpression = whereLambda + filter;
-                return Dal.GetAllList(Context, filterExpression);
+                return Dal.GetAllList(Context, filterExpression, IncludeExpressions);
             }
 
-            return Dal.GetAllList(Context, whereLambda);
+            return Dal.GetAllList(Context, whereLambda, IncludeExpressions);
         }
 
         public TEntity GetByFilter(Func<TEntity, bool> filter)
         {
-            return Dal.GetByFilter(Context, filter);
+            return Dal.GetByFilter(Context, filter, IncludeExpressions);
         }
     }
 }

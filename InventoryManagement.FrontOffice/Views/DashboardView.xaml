@@ -4,7 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:viewModels="clr-namespace:InventoryManagement.FrontOffice.ViewModels"
         mc:Ignorable="d" Height="600" Width="1024" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None" >
+    <Window.DataContext>
+        <x:Type TypeName="viewModels:DashboardViewModel"/>
+    </Window.DataContext>
     <Grid Background="#FFEEEEEE">
         <StackPanel VerticalAlignment="Top">
             <Grid Background="#FF2196F3" Height="10"/>
@@ -48,7 +52,7 @@
                 </StackPanel>
                 
                 <TextBlock x:Name="UserName" TextWrapping="Wrap" FontFamily="Britannic Bold" FontSize="18" FontWeight="Bold">
-                    <Run Foreground="White">Fatih Karaüzüm</Run>
+                    <Run Foreground="White" Text="{Binding Path=UserModel.NameSurname}"></Run>
                 </TextBlock>
             </StackPanel>
             <ListView x:Name="ListViewMenu" Margin="0,100, 0,100" Foreground="LightGray" FontFamily="Champagne &amp; Limousines" FontSize="18" SelectionChanged="ListViewMenu_SelectionChanged" SelectedIndex="0">
