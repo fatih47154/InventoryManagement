@@ -93,16 +93,18 @@ namespace InventoryManagement.FrontOffice.ViewModels
 
         public void OnSubmit()
         {
-            Operation = new Operation();
-            Operation.CompanyId = SelectedCompany.Id;
-            Operation.LocationId = SelectedLocation.Id;
-            Operation.Name = ToUserFromStore.Name;
-            Operation.Surname = ToUserFromStore.Surname;
-            Operation.OperationTime = DateTime.Now;
-            Operation.OperationTypeId = OperationTypeEnums.DepodanKullaniciya;
-            Operation.StoreId = ToUserFromStore.StoreId;
-            Operation.UserId = LoggedInUser.LoggedUser.Id;
-            Operation.UpdatededDate = DateTime.Now;
+            Operation = new Operation
+            {
+                CompanyId = SelectedCompany.Id,
+                LocationId = SelectedLocation.Id,
+                Name = ToUserFromStore.Name,
+                Surname = ToUserFromStore.Surname,
+                OperationTypeId = OperationTypeEnums.DepodanKullaniciya,
+                StoreId = ToUserFromStore.StoreId,
+                UserId = LoggedInUser.LoggedUser.Id,
+                UpdatededDate = DateTime.Now,
+                Guncel = true
+            };
 
             var result = OperationBll.AddOrUpdate(Operation);
             if (result)

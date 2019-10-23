@@ -13,6 +13,7 @@ namespace InventoryManagement.Bll.Enums
         public static Guid KullanicidanDepoya { get; set; }
         public static Guid DepodanKullaniciya { get; set; }
         public static Guid DepoyaEklendi { get; set; }
+        public static Guid KullaniciDegistir { get; set; }
 
         public OperationTypeEnums()
         {
@@ -20,10 +21,12 @@ namespace InventoryManagement.Bll.Enums
             KullanicidanDepoya = new Guid();
             DepodanKullaniciya = new Guid();
             DepoyaEklendi = new Guid();
+            KullaniciDegistir = new Guid();
 
             KullanicidanDepoya = OperationTypeBll.GetByFilter(x => x.Name == "Kullanıcıdan Depoya").Id;
             DepodanKullaniciya = OperationTypeBll.GetByFilter(x => x.Name == "Depodan Kullanıcıya").Id;
             DepoyaEklendi = OperationTypeBll.GetByFilter(x => x.Name == "Depoya Eklendi").Id;
+            KullaniciDegistir = OperationTypeBll.GetByFilter(x => x.Name == "Kullanıcı Değiştir").Id;
         }
 
     }

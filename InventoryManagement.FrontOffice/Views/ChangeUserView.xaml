@@ -42,19 +42,24 @@
         </StackPanel>
         <StackPanel Grid.Column="0" Orientation="Horizontal" Margin="5" Grid.Row="3">
             <materialDesign:PackIcon Kind="Company" VerticalAlignment="Center"/>
-            <ComboBox x:Name="Company" Height="34" 
-                              ItemsSource="{Binding Path=Company, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                              SelectedValue="{Binding SelectedCompany}"
-                              DisplayMemberPath="Name" 
-                              materialDesign:HintAssist.Hint="Şirket Seçiniz" Width="264" Margin="10 0"
-                              IsSynchronizedWithCurrentItem="true">
+            <ComboBox ItemsSource="{Binding Path=Company}" Height="34" 
+                              SelectedValuePath="Name"
+                              SelectedItem="{Binding Path=SelectedCompany, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                              IsSynchronizedWithCurrentItem="True"
+                              materialDesign:HintAssist.Hint="Şirket Seçiniz" Width="264" Margin="10 0">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Name}"></TextBlock>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
             </ComboBox>
         </StackPanel>
         <StackPanel Grid.Column="0" Orientation="Horizontal" Margin="5" Grid.Row="4">
             <materialDesign:PackIcon Kind="Location" VerticalAlignment="Center"/>
-            <ComboBox x:Name="Location" materialDesign:HintAssist.Hint="Lokasyon Seçiniz" Width="264" Height="34" Margin="10 0"
+            <ComboBox materialDesign:HintAssist.Hint="Lokasyon Seçiniz" Width="264" Height="34" Margin="10 0"
                               ItemsSource="{Binding Path=Location}"
-                              SelectedItem="{Binding Path=SelectedLocation}">
+                              SelectedItem="{Binding Path=SelectedLocation, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                              IsSynchronizedWithCurrentItem="True">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
@@ -72,6 +77,7 @@
             <materialDesign:PackIcon Kind="MobileDevices" VerticalAlignment="Center"/>
             <TextBox x:Name="Model" IsEnabled="False" materialDesign:HintAssist.Hint="Model" Height="38" Text="{Binding Path=ChangeUserModel.Model}" Width="264" Margin="10 0"/>
         </StackPanel>
+
         <!--Right Panel-->
         <StackPanel Orientation="Horizontal" Margin="5" Grid.Row="0" Grid.Column="1">
             <materialDesign:PackIcon Kind="FormatListNumbers" VerticalAlignment="Center"/>
@@ -94,8 +100,12 @@
             <TextBox x:Name="Registrant" Text="{Binding Path=ChangeUserModel.Registrant}" Height="38" materialDesign:HintAssist.Hint="İşlemi Yapan" Width="264" Margin="10 0" IsEnabled="False"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5"  Grid.Row="5" Grid.Column="1">
-            <Button HorizontalAlignment="Left" Content="Giriş" Command="{Binding Path=SubmitCommand}" FontFamily="Impact" FontSize="18" Width="100" Background="#FF2F77CD" BorderBrush="#FF307CD6" Margin="10,0,0,0" Foreground="#DDFFFFFF" />
-            <Button HorizontalAlignment="Right" Content="Temizle" FontFamily="Impact" FontSize="18" Width="100" Background="#FFE05959" BorderBrush="#FFE05959" Margin="10,0,0,0" Foreground="#DDFFFFFF" />
+            <Button HorizontalAlignment="Left" Content="Giriş"
+                    Command="{Binding Path=SubmitCommand}"
+                    CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
+                    FontFamily="Impact" FontSize="18" Width="100" Background="#FF2F77CD" BorderBrush="#FF307CD6" Margin="10,0,0,0" Foreground="#DDFFFFFF" />
+            <Button HorizontalAlignment="Right" Content="Temizle"
+                    Command="{Binding Path=CleanCommand}" FontFamily="Impact" FontSize="18" Width="100" Background="#FFE05959" BorderBrush="#FFE05959" Margin="10,0,0,0" Foreground="#DDFFFFFF" />
         </StackPanel>
     </Grid>
 </UserControl>

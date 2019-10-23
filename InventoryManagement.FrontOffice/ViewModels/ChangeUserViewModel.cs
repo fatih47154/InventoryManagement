@@ -18,35 +18,92 @@ using InventoryManagement.FrontOffice.Models;
 
 namespace InventoryManagement.FrontOffice.ViewModels
 {
-    public class ChangeUserViewModel: Screen
+    public class ChangeUserViewModel: INotifyPropertyChanged
     {
+        // Commands
         public RelayCommand<string> SearchCommand { get; set; }
         public RelayCommand SubmitCommand { get; set; }
+        public RelayCommand CleanCommand { get; set; }
+
+        // Business Logic
         private OperationBll OperationBll { get; set; }
         private CompanyBll CompanyBll { get; }
         private LocationBll LocationBll { get; }
-        public ChangeUserModel ChangeUserModel { get; set; }
-        public ObservableCollection<CompanyModel> Company { get; set; }
-        public ObservableCollection<LocationModel> Location { get; set; }
-        public Operation Operation { get; set; }
-        private CompanyModel SelectedCompanyModel { get; set; }
 
+        // Models
+        private ChangeUserModel _changeUser;
+        public ChangeUserModel ChangeUserModel
+        {
+            get { return _changeUser; }
+            set
+            {
+                _changeUser = value;
+                if (value != null)
+                {  
+                    SelectedCompany = Company.FirstOrDefault(x => x.Id == value.CompanyId);
+                    SelectedLocation = Location.FirstOrDefault(x => x.Id == value.LocationId);
+                }
+                OnPropertyChanged(nameof(ChangeUserModel));
+            }
+        }
+
+        // Combobox Selected Models
+        private CompanyModel _selectedCompanyModel;
         public CompanyModel SelectedCompany
         {
             get
             {
-                return SelectedCompanyModel;
+                return _selectedCompanyModel;
             }
             set
             {
-                SelectedCompanyModel = value;
-                NotifyOfPropertyChange(() => SelectedCompany);
+                _selectedCompanyModel = value;
+                OnPropertyChanged(nameof(SelectedCompany));
             }
         }
 
-        public LocationModel SelectedLocation { get; set; }
+        private LocationModel _selectedLocation;
+        public LocationModel SelectedLocation
+        {
+            get { return _selectedLocation; }
+            set
+            {
+                _selectedLocation = value;
+                OnPropertyChanged(nameof(SelectedLocation));
+            }
+        }
+
+        // Models
+        public ObservableCollection<CompanyModel> Company { get; set; }
+        public ObservableCollection<LocationModel> Location { get; set; }
+        public Operation Operation { get; set; }
+        private Operation _searchOperation;
+
+        // Enums
         private OperationTypeEnums OperationTypeEnums { get; }
         private StatusEnums StatusEnums { get; }
+
+        // Constructor
+        public ChangeUserViewModel()
+        {
+            CompanyBll = new CompanyBll();
+            LocationBll = new LocationBll();
+            OperationBll = new OperationBll();
+
+            Company = new ObservableCollection<CompanyModel>();
+            Location = new ObservableCollection<LocationModel>();
+
+            SearchCommand = new RelayCommand<string>(OnSearch);
+            SubmitCommand = new RelayCommand(OnSubmit);
+            CleanCommand = new RelayCommand(onClean);
+
+            OperationTypeEnums = new OperationTypeEnums();
+            StatusEnums = new StatusEnums();
+
+            BindData();
+        }
+
+        // Functions
         private void BindData()
         {
             var companies = CompanyBll.GetAllList(x => x.IsActive == true);
@@ -61,46 +118,32 @@ namespace InventoryManagement.FrontOffice.ViewModels
                 Location.Add(new LocationModel() { Id = item.Id, Name = item.Name });
             }
         }
-        public ChangeUserViewModel()
-        {
-            CompanyBll = new CompanyBll();
-            LocationBll = new LocationBll();
-            OperationBll = new OperationBll();
-            ChangeUserModel = new ChangeUserModel();
-            Company = new ObservableCollection<CompanyModel>();
-            Location = new ObservableCollection<LocationModel>();
-            SearchCommand = new RelayCommand<string>(OnSearch);
-            SubmitCommand = new RelayCommand(OnSubmit);
-            OperationTypeEnums = new OperationTypeEnums();
-            StatusEnums = new StatusEnums();
-
-            BindData();
-        }
+        
 
         public void OnSearch(string inventoryNumber)
         {
             if (inventoryNumber != "")
             {
-                var operation = OperationBll.GetByFilter(x => x.Store.InventoryNumber == inventoryNumber);
-                if (operation != null)
+                _searchOperation = OperationBll.GetByFilter(x => x.Store.InventoryNumber == inventoryNumber && x.Guncel);
+                if (_searchOperation != null)
                 {
-                    ChangeUserModel.DeviceType = operation.Store.Model.DeviceType.Name;
-                    ChangeUserModel.InventoryNumber = operation.Store.InventoryNumber;
-                    ChangeUserModel.Model = operation.Store.Model.Name;
-                    ChangeUserModel.OperationTime = operation.OperationTime;
-                    ChangeUserModel.Registrant = operation.User.Name + " " + operation.User.Surname;
-                    ChangeUserModel.SerialNumber = operation.Store.SerialNumber;
-                    ChangeUserModel.StoreId = operation.Id;
-                    ChangeUserModel.WarrantyStart = operation.Store.WarrantyStart;
-                    ChangeUserModel.LocationId = operation.LocationId;
-                    ChangeUserModel.CompanyId = operation.CompanyId;
-                    ChangeUserModel.Name = operation.Name;
-                    ChangeUserModel.Surname = operation.Surname;
-
-                    SelectedCompany = new CompanyModel
+                    ChangeUserModel = new ChangeUserModel
                     {
-                        Name = operation.Company.Name, Id = operation.CompanyId, Number = operation.Company.Number
+                        DeviceType = _searchOperation.Store.Model.DeviceType.Name,
+                        InventoryNumber = _searchOperation.Store.InventoryNumber,
+                        Model = _searchOperation.Store.Model.Name,
+                        OperationTime = _searchOperation.OperationTime,
+                        Registrant = _searchOperation.User.Name + " " + _searchOperation.User.Surname,
+                        SerialNumber = _searchOperation.Store.SerialNumber,
+                        StoreId = _searchOperation.StoreId,
+                        WarrantyStart = _searchOperation.Store.WarrantyStart,
+                        CompanyId = _searchOperation.CompanyId,
+                        LocationId = _searchOperation.LocationId,
+                        Name = _searchOperation.Name,
+                        Surname = _searchOperation.Surname,
+                        UserId = LoggedInUser.LoggedUser.Id
                     };
+
                 }
                 else
                 {
@@ -111,34 +154,48 @@ namespace InventoryManagement.FrontOffice.ViewModels
 
         public void OnSubmit()
         {
-            //Operation = new Operation();
-            //Operation.CompanyId = SelectedCompany.Id;
-            //Operation.LocationId = SelectedLocation.Id;
-            //Operation.Name = ToUserFromStore.Name;
-            //Operation.Surname = ToUserFromStore.Surname;
-            //Operation.OperationTime = DateTime.Now;
-            //Operation.OperationTypeId = OperationTypeEnums.DepodanKullaniciya;
-            //Operation.StoreId = ToUserFromStore.StoreId;
-            //Operation.UserId = LoggedInUser.LoggedUser.Id;
-            //Operation.UpdatededDate = DateTime.Now;
+            if (ChangeUserModel.Name != _searchOperation.Name || ChangeUserModel.Surname != _searchOperation.Surname)
+            {
+                Operation = new Operation
+                {
+                    CompanyId = SelectedCompany.Id,
+                    LocationId = SelectedLocation.Id,
+                    Name = ChangeUserModel.Name,
+                    Surname = ChangeUserModel.Surname,
+                    OperationTypeId = OperationTypeEnums.KullaniciDegistir,
+                    StoreId = ChangeUserModel.StoreId,
+                    UserId = LoggedInUser.LoggedUser.Id,
+                    UpdatededDate = DateTime.Now,
+                    Guncel = true
+                };
+            }
 
-            //var result = OperationBll.AddOrUpdate(Operation);
-            //if (result)
-            //{
-            //    MessageBox.Show("Kayıt Girildi", "Bilgilendirme Mesajı", MessageBoxButton.OK, MessageBoxImage.Information);
-            //    var store = StoreBll.GetByFilter(x => x.InventoryNumber == ToUserFromStore.InventoryNumber);
-            //    store.Kullanimda = true;
-            //    store.StatusId = StatusEnums.Kullanimda;
-            //    result = StoreBll.AddOrUpdate(store);
-            //}
+            var result = OperationBll.AddOrUpdate(Operation);
+            if (result)
+            {
+                MessageBox.Show("Kayıt Girildi", "Bilgilendirme Mesajı", MessageBoxButton.OK, MessageBoxImage.Information);
+                var oldOperation = OperationBll.GetByFilter(x => x.Id == _searchOperation.Id);
+                oldOperation.Guncel = false;
+                result = OperationBll.AddOrUpdate(oldOperation);
+
+                onClean();
+            }
         }
 
-        //public event PropertyChangedEventHandler PropertyChanged;
+        public void onClean()
+        {
+            ChangeUserModel = new ChangeUserModel();
+            SelectedCompany = new CompanyModel();
+            SelectedLocation = new LocationModel();
+        }
 
-        //[NotifyPropertyChangedInvocator]
-        //protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        //{
-        //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        //}
+        // Signatures
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        [NotifyPropertyChangedInvocator]
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }

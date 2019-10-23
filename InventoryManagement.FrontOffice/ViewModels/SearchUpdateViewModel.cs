@@ -28,7 +28,7 @@ namespace InventoryManagement.FrontOffice.ViewModels
         void InitializeInRuntime()
         {
             Operations = new List<Operation>();
-            Operations = OperationBll.GetAllList(x => x.Store.Status.Name == "Kullanımda");
+            Operations = OperationBll.GetAllList(x => x.Guncel);
             
             Updates = new List<Update>();
             foreach (var item in Operations)

@@ -78,6 +78,10 @@
     <Compile Include="Migrations\201910151940321_InventoryManagementDatabase.Designer.cs">
       <DependentUpon>201910151940321_InventoryManagementDatabase.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910231423428_InventoryManagementDb.cs" />
+    <Compile Include="Migrations\201910231423428_InventoryManagementDb.Designer.cs">
+      <DependentUpon>201910231423428_InventoryManagementDb.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\EntityRepositoryBase.cs" />
@@ -102,6 +106,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201910151940321_InventoryManagementDatabase.resx">
       <DependentUpon>201910151940321_InventoryManagementDatabase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910231423428_InventoryManagementDb.resx">
+      <DependentUpon>201910231423428_InventoryManagementDb.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
